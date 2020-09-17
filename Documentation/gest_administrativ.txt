@@ -1,0 +1,138 @@
+Gest. administratifs
+
+Obj.:
+- Gest. les documents administratifs par un dv aussi
+- ACCESSIBILITE (compatibilité avec synth.voc./inverse video/zoomable etc)
+
+Les fonctions:
+     Step 1
+     - CRUD doc(s) (jpg/doc/rtf/pdf etc)
+     - differente niveau d'authorisation (RO/RW/)
+     - categorisee/recherche/filter etc. par (multi)tag:
+          (nom/propr./type/priorité/subject-domain/date/validité/note etc)
+    - note vocale/écrite
+     - alarme/archivage auto (par example : subject/date/validité)
+     - (acces a la distance (cloud?))
+     
+
+
+     Step 2
+     - ajouter par scanner/app photo/OCR
+     - imprimer direct (coounter?)
+     - quickview 
+     - envoyé par e-mail
+     - recherche vocale
+     -logging
+
+     Step3
+     - compatibilité app. mobile
+
+document de conception
+
+/* <dictionnaire de données>
+documents( id, label, file_src, audio_src, validation, )
+user(id, nom, prenom, email, username, passw )
+keywords ( id , label)
+profil (id, label, validity)
+
+*/ </dictionnaire de données>
+
+<mcd>
+
+	<entités>
+		doc
+		     id
+			nom
+               note
+               type 
+               date
+               validity/priority
+			file_src
+               audio_src //note
+               
+               
+               
+		user
+			id
+			nom
+			email
+			username
+			passw
+               								
+		keywords
+			id
+			nom
+
+          Profil
+               id
+               nom
+               validation
+       
+		</entités>
+		
+		<association>
+		
+          search(keywords)
+               doc (0,n)
+               categories (0,n)
+
+          acces
+               doc (1,n)
+               user (0,n)
+
+       
+          (user-profil)
+               user (1,1)
+               profil (0,n)
+
+          prop(user-doc)
+               user (0,n)
+               doc (1,1)
+          
+	     </association
+     </mcd>
+     <mld>
+          documents
+		     doc_id (pk) not null
+			doc_label (varchar) not null
+               doc_note (varchar)
+               doc_type  (varchar) not null
+               doc_datetime (datetime) not null auto
+               doc_validity/priority (date)
+			doc_file_src (varchar)
+               doc_audio_src (varchar)
+               doc_user(prop) (int) not null (fk)
+               doc_keywords (fk)
+          
+          keywords
+               key_id (pk)
+               key_label (varchar) not null
+
+          user
+			use_id (pk) not null
+			use_nom (varchar) 
+               use_prenom (varchar) 
+			use_email (varchar) 
+			use_username (varchar) not null
+			use_passw     (varchar) 
+               use_profil (fk)
+
+          Profil
+               pro_id (pk)
+               pro_nom (varchar) not null
+               pro_validation (date)
+
+          search
+               sea_id (pk)
+               sea_doc (int) not null (fk)
+               sea_keywords (int) not null (fk)
+          
+          acces
+               acc_id (pk)
+               acc_doc (int) not null (fk)
+               acc_user (int) not null (fk)
+
+         
+     	
+    
+     </mld>
