@@ -1,6 +1,6 @@
 <?php
 	//	$doc_validation=date('Y-m-d');
-	
+	var_dump($_GET);
 	?>
       
       <form method="post" action="<?= hlien("documents", "edit") ?>">

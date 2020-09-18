@@ -22,7 +22,7 @@ class Ctr_documents extends Ctr_controleur {
 				$result=Documents::afficherParUser($_SESSION['use_id']);
 			}
 		} else {
-			//header("location:index.php?m=authentification");
+			header("location:index.php?m=accueil");
 		}
 		require $this->gabarit;
 	}
@@ -33,7 +33,8 @@ class Ctr_documents extends Ctr_controleur {
 			$u=new Documents();
 			$u->chargerDepuisTableau($_POST);
 			$u->sauver();
-			header("location:index.php?m=documents");
+			//header("location:index.php?m=documents");
+			header("location:index.php?m=files&a=edit");
 		} else {				
 			$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 			$u=new Documents($id);

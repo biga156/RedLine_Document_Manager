@@ -1,4 +1,5 @@
 <?php
+
 if (isset($_GET["id"])) {
 	$documentCurrent = Documents::findDocument($_GET['id']);
 

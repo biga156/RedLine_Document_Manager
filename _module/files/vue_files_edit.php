@@ -1,4 +1,6 @@
-        <form method="post" enctype="multipart/form-data" action="<?= hlien("files", "edit") ?>">
+      
+      
+      <form method="post" enctype="multipart/form-data" action="<?= hlien("files", "edit") ?>">
             <input type="hidden" name="fil_id" id="fil_id" value="<?= $id ?>" />
             <div class='form-group'>
                 <label for='fil_name'></label>

@@ -8,6 +8,8 @@ if (!isset($_GET["m"]))
 if (!isset($_GET["a"]))
 	$_GET["a"]="index";
 
+	//header("location:" . hlien("accueil", "index"));
+
 $module = "Ctr_" . $_GET["m"];
 new $module($_GET["a"]);
 ?>

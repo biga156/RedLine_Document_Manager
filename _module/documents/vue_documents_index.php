@@ -25,7 +25,7 @@
 	<div id="resultat"></div>
 
 
-
+	<p><a class="btn btn-primary" href="<?= hlien("documents", "edit", "id", 0) ?>">New document</a></p>
 	<table class="table table-striped table-bordered table-hover" id="lstdocuments">
 		<thead>
 			<tr>
